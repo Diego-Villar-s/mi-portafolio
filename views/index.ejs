@@ -1,21 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Portafolio - Ingeniería de Sistemas</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    <header>
-        <nav>
-            <a href="#inicio">Inicio</a>
-            <a href="#proyectos">Proyectos</a>
-            <a href="#contacto">Contacto</a>
-        </nav>
-    </header>
+    <%- include('partials/header') %>
 
     <main>
         <section id="inicio" class="hero">
@@ -28,19 +20,25 @@
         <section id="proyectos">
             <h2>Mis Proyectos</h2>
             <div class="grid-proyectos">
-                <!-- Los proyectos se inyectan desde JS -->
+                <% proyectos.forEach(function(proyecto) { %>
+                    <article class="card-proyecto">
+                        <img src="<%= proyecto.img %>" alt="<%= proyecto.titulo %>">
+                        <h3><%= proyecto.titulo %></h3>
+                        <span class="tech"><%= proyecto.tech %></span>
+                        <p><%= proyecto.desc %></p>
+                    </article>
+                <% }); %>
             </div>
         </section>
+
         <section id="contacto">
             <h2>Contacto</h2>
             <p>Correo: 022100772k@uandina.edu.pe</p>
         </section>
     </main>
-    <footer>
-        <p>&copy; 2026 Diego Villar - Todos los derechos reservados.</p>
-    </footer>
+
+    <%- include('partials/footer') %>
 
     <script src="script.js"></script>
 </body>
-
 </html>
